@@ -3,6 +3,7 @@
 """ Mangaeden API Module """
 
 import mangaeden.manga as manga
+import mangaeden.chapter as chapter
 import mangaeden.utils as utils
 
 MANGA_LIST = 'https://www.mangaeden.com/api/list/{}/'
@@ -29,3 +30,7 @@ def get_dataset(lang: int=0, page_n: int=None, n_mangas_per_page: int=None) -> d
 def get_manga(_id: str) -> manga.Manga:
     """Returns a manga data row."""
     return utils.get_json(MANGA.format(_id))
+
+def get_chapter(_id: str) -> chapter.Chapter:
+    """Returns a chapter data row."""
+    return utils.get_json(CHAPTER.format(_id))
