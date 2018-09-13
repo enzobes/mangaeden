@@ -13,7 +13,7 @@ CHAPTER = 'https://www.mangaeden.com/api/chapter/{}/'
 IMAGE = 'https://cdn.mangaeden.com/mangasimg/{}'
 
 
-def get_dataset(lang: int) -> dict:
+def get_dataset(lang: int) -> list:
     params = dict()
     url = MANGA_LIST.format(str(lang))
     return utils.get_json(url, params)['manga']
