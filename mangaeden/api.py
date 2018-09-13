@@ -2,7 +2,8 @@
 
 """ Mangaeden API Module """
 
-from mangaeden.utils import get_json
+import mangaeden.manga as manga
+import mangaeden.utils as utils
 
 MANGA_LIST = 'https://www.mangaeden.com/api/list/{}/'
 MANGA = 'https://www.mangaeden.com/api/manga/{}/'
@@ -23,4 +24,8 @@ def get_dataset(lang: int=0, page_n: int=None, n_mangas_per_page: int=None) -> d
     if n_mangas_per_page:
         params['l'] = n_mangas_per_page
 
-    return get_json(url, params)
+    return utils.get_json(url, params)
+
+def get_manga(_id: str) -> manga.Manga:
+    """Returns a manga data row."""
+    return utils.get_json(MANGA.format(_id))
