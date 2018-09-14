@@ -11,19 +11,14 @@ def get_images(chapter: Chapter) -> list:
     """Gets chapter images."""
     return chapter['images']
 
-def get_image_page(chapter: Chapter, row_n: int) -> int:
+def get_image_page(images: list, row_n: int) -> int:
     """Gets image page number."""
-    return chapter['images'][row_n][0]
+    return images[row_n][0]
 
-def get_image_url(chapter: Chapter, row_n: int) -> str:
+def get_image_url(images: list, row_n: int) -> str:
     """Gets image url."""
-    return chapter['images'][row_n][1]
+    return images[row_n][1]
 
-def get_image_resolution(chapter: Chapter, row_n: int) -> list:
+def get_image_resolution(images: list, row_n: int) -> list:
     """Gets image resolution."""
-    return list(
-        [
-            chapter['images'][row_n][2],
-            chapter['images'][row_n][3]
-        ]
-    )
+    return list([images[row_n][2], images[row_n][3]])

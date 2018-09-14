@@ -26,27 +26,23 @@ def get_categories(manga: Manga) -> list:
 
 def get_chapters(manga: Manga) -> list:
     """Gets chapters list."""
-    return manga['chapters'][0]
+    return manga['chapters']
 
-def get_chapter_number(manga: Manga, row_n: int) -> int:
+def get_chapter_number(chapters: list, row_n: int) -> int:
     """Gets the chapter number at row_n."""
-    chapters = get_chapters(manga)
+    return chapters[row_n][0]
+
+def get_chapter_date(chapters: list, row_n: int) -> float:
+    """Gets the chapter unix timestamp code at row_n."""
     return chapters[row_n][1]
 
-def get_chapter_date(manga: Manga, row_n: int) -> float:
-    """Gets the chapter unix timestamp code at row_n."""
-    chapters = get_chapters(manga)
+def get_chapter_title(chapters: list, row_n: int) -> str:
+    """Gets the chapter title at row_n."""
     return chapters[row_n][2]
 
-def get_chapter_title(manga: Manga, row_n: int) -> str:
-    """Gets the chapter title at row_n."""
-    chapters = get_chapters(manga)
-    return chapters[row_n][3]
-
-def get_chapter_id(manga: Manga, row_n: int) -> str:
+def get_chapter_id(chapters: list, row_n: int) -> str:
     """Gets the chapter id at row_n."""
-    chapters = get_chapters(manga)
-    return chapters[row_n][4]
+    return chapters[row_n][3]
 
 def get_creation_date(manga: Manga) -> float:
     """Gets creation unix timestamp code."""
