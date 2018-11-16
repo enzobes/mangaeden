@@ -2,11 +2,7 @@
 
 import argparse
 import mangaeden.actions as actions
-
-
-__author__ = "Manoah Bernier"
-__email__ = "contact@mhbernier.com"
-__version__ = "1.0"
+from mangaeden import __version__
 
 
 def init_parser() -> argparse.ArgumentParser:
@@ -67,12 +63,12 @@ def set_arguments(parser: argparse.ArgumentParser) -> None:
     # optional arguments
     parser.add_argument(
         '-v', '--verbose',
-        help='give more detailled output',
+        help='give more detailed output',
         action='store_true'
     )
     parser.add_argument(
         '-V', '--version',
         help='show program version and exit',
         action='version',
-        version='%(prog)s {}'.format(__version__)
+        version=f'%(prog)s {__version__}'
     )

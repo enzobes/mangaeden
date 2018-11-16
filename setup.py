@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from setuptools import setup, find_packages
+import mangaeden
 
 __maintainer__ = "Manoah Bernier"
 __maintainer_email__ = "contact@mhbernier.com"
@@ -9,8 +10,8 @@ __maintainer_email__ = "contact@mhbernier.com"
 setup(
     name='mangaeden',
     description='An API wrapper for https://mangaeden.com.',
-    version='1.0a0',
-    license='MIT',
+    version=mangaeden.__version__,
+    license='GPLv3',
     author='Manoah Bernier',
     author_email='contact@mhbernier.com',
     maintainer=__maintainer__,
@@ -23,7 +24,7 @@ setup(
         'Environment :: Console',
         'Intended Audience :: Developers',
         'Intended Audience :: End Users/Desktop',
-        'License :: OSI Approved :: MIT License',
+        'License :: OSI Approved :: GNU General Public License v3 (GPLv3)',
         'Natural Language :: English',
         'Operating System :: MacOS',
         'Operating System :: POSIX :: Linux',
