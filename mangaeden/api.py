@@ -18,13 +18,16 @@ def get_dataset(lang: int) -> list:
     url = MANGA_LIST.format(str(lang))
     return utils.get_json(url, params)['manga']
 
+
 def get_manga(_id: str) -> manga.Manga:
     """Returns a manga data row."""
     return utils.get_json(MANGA.format(_id))
 
+
 def get_chapter(_id: str) -> chapter.Chapter:
     """Returns a chapter data row."""
     return utils.get_json(CHAPTER.format(_id))
+
 
 def get_image(url: str) -> tuple:
     """Returns an image data."""

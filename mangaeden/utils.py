@@ -14,7 +14,7 @@ def secure_get(url, params=None):
     except Timeout:
         # TODO Implement logging
         return None
-    except HTTPError as e:
+    except HTTPError:
         # TODO Implement logging "ERROR {}: {}\n".format(e.code, e.reason)
         return None
 
@@ -24,6 +24,7 @@ def secure_get(url, params=None):
 def get_json(url, params=None):
     """Returns the json data of the requested url"""
     return secure_get(url, params).json()
+
 
 def binary_search(dataset: list, dataset_len: int, target: str) -> int:
     left = 0
@@ -37,5 +38,5 @@ def binary_search(dataset: list, dataset_len: int, target: str) -> int:
             right = middle - 1
         else:
             return middle
-    
+
     return -1

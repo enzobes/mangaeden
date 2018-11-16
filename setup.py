@@ -2,11 +2,9 @@
 # -*- coding: utf-8 -*-
 
 from setuptools import setup, find_packages
-import mangaeden
 
 __maintainer__ = "Manoah Bernier"
 __maintainer_email__ = "contact@mhbernier.com"
-
 
 setup(
     name='mangaeden',
@@ -15,10 +13,11 @@ setup(
     license='MIT',
     author='Manoah Bernier',
     author_email='contact@mhbernier.com',
-    maintainer = __maintainer__,
+    maintainer=__maintainer__,
     maintainer_email=__maintainer_email__,
     url='https://github.com/mhbernier/mangaeden',
     packages=find_packages(),
+    install_requires=['requests'],
     classifiers=[
         'Development Status :: 3 - Alpha',
         'Environment :: Console',
