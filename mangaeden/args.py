@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 
 import argparse
+import mangaeden.actions as actions
+
 
 __author__ = "Manoah Bernier"
 __email__ = "contact@mhbernier.com"
@@ -16,29 +18,53 @@ def init_parser() -> argparse.ArgumentParser:
 
 
 def set_arguments(parser: argparse.ArgumentParser) -> None:
-    parser.add_argument(
+    subparsers = parser.add_subparsers(metavar="")
+
+    search = subparsers.add_parser(
         'search',
-        type=str,
-        help='search for mangas'
+        help='search mangas'
     )
-    parser.add_argument(
-        'download',
+    search.add_argument(
+        'manga',
         type=str,
+        action=actions.SearchAction
+    )
+
+    download = subparsers.add_parser(
+        'download',
         help='download mangas'
     )
-    parser.add_argument(
-        'remove',
+    download.add_argument(
+        'manga',
         type=str,
+        nargs='*'
+    )
+
+    remove = subparsers.add_parser(
+        'remove',
         help='remove downloaded mangas'
     )
-    parser.add_argument(
+    remove.add_argument(
+        'manga',
+        type=str,
+        nargs='*'
+    )
+
+    list = subparsers.add_parser(
         'list',
         help='list downloaded mangas'
     )
-    parser.add_argument(
+
+    show = subparsers.add_parser(
         'show',
-        type=str,
-        help='show information about mangas')
+        help='show information about mangas'
+    )
+    show.add_argument(
+        'manga',
+        type=str
+    )
+
+    # optional arguments
     parser.add_argument(
         '-v', '--verbose',
         help='give more detailled output',
