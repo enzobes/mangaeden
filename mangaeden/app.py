@@ -7,7 +7,6 @@ import os
 import mangaeden.api as api
 import mangaeden.utils as utils
 import mangaeden.manga as manga
-import mangaeden.chapter as chapter
 
 
 def download_image(img: tuple, name: str, path: str = '') -> None:
@@ -18,25 +17,24 @@ def download_image(img: tuple, name: str, path: str = '') -> None:
         file.write(img[0])  # writing image data to file
 
 
-def download_chapter(_manga: manga.Manga, row_n: int, path: str = '') -> None:
-    f_path = path + manga.get_title(_manga)
+def download_chapter(m: manga.Manga, row_n: int, path: str = '') -> None:
+    f_path = path + m.get_title()
     if not os.path.exists(f_path):  # creates manga folder if it doesn't exists
         os.makedirs(f_path)
 
-    chapters = manga.get_chapters(_manga)
-    chapter_number = manga.get_chapter_number(chapters, row_n)
-    chapter_title = manga.get_chapter_title(chapters, row_n)
+    chapter_number = m.get_chapter_number(row_n)
+    chapter_title = m.get_chapter_title(row_n)
 
     f_name = str(chapter_number) + ". " + chapter_title + "/"
     f_path = f_path + "/" + f_name
     if not os.path.exists(f_path):  # creates chapter folder if it doesn't exists
         os.makedirs(f_path)
 
-    _chapter = api.get_chapter(manga.get_chapter_id(chapters, row_n))
-    chapter_images = chapter.get_images(_chapter)
+    chapter = api.get_chapter(m.get_chapter_id(row_n))
+    chapter_images = chapter.get_images()
     for n in range(len(chapter_images)):
-        img = api.get_image(chapter.get_image_url(chapter_images, n))
-        download_image(img, str(chapter.get_image_page(chapter_images, n)), f_path)
+        img = api.get_image(chapter.get_image_url(n))
+        download_image(img, str(chapter.get_image_page(n)), f_path)
 
 
 def search(req: str, result_n: int = 10) -> tuple:

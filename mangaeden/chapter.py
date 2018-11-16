@@ -2,26 +2,26 @@
 
 """ Mangaeden Manga Module """
 
-import typing
 
-Chapter = typing.NewType('Chapter', dict)
+class Chapter(object):
+    def __init__(self, data=None):
+        self.data = data
 
+    def get_images(self) -> list:
+        """Gets chapter images."""
+        return self.data['images']
 
-def get_images(chapter: Chapter) -> list:
-    """Gets chapter images."""
-    return chapter['images']
+    def get_image_page(self, row_n: int) -> int:
+        """Gets image page number."""
+        return self.data['images'][row_n][0]
 
+    def get_image_url(self, row_n: int) -> str:
+        """Gets image url."""
+        return self.data['images'][row_n][1]
 
-def get_image_page(images: list, row_n: int) -> int:
-    """Gets image page number."""
-    return images[row_n][0]
-
-
-def get_image_url(images: list, row_n: int) -> str:
-    """Gets image url."""
-    return images[row_n][1]
-
-
-def get_image_resolution(images: list, row_n: int) -> list:
-    """Gets image resolution."""
-    return list([images[row_n][2], images[row_n][3]])
+    def get_image_resolution(self, row_n: int) -> tuple:
+        """Gets image resolution."""
+        return tuple([
+            self.data['images'][row_n][2],
+            self.data['images'][row_n][3]
+        ])
